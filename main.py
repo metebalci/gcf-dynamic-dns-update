@@ -1,4 +1,7 @@
+import os
 from google.cloud.dns.client import Client
+
+zone_name = os.environ['ZONE']
 
 def main(request):
 
@@ -15,11 +18,12 @@ def main(request):
     print(myip)
 
     cli = Client()
-    zone = cli.zone('metebalci-com')
+    zone = cli.zone(zone_name)
     # rr has trailing dot
     hostname = hostname + '.'
     rr = zone.resource_record_set(hostname, 'A', 60, [myip])
     changes = zone.changes()
+    changes.delete_record_set(rr)
     changes.add_record_set(rr)
     changes.create()
 
