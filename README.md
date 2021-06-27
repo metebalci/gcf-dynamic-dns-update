@@ -29,3 +29,9 @@ It can be directly used with UDM Pro (and possibly other Unifi and Edge routers)
 - username: not used
 - password: it should be same as PASS environment variable of the cloud function deployed
 - server: <CLOUD_FUNCTION_TRIGGER_URL_WITHOUT_HTTPS>?myip=%i&hostname=%h
+
+On UDM Pro, you can check the resulting config at `/run/inadyn.conf`. 
+
+# Known Issues
+
+- Cloud Function does not actually check if the DNS record is updated, it only creates the change request.
