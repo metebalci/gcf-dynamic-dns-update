@@ -7,7 +7,6 @@ steps:
       - dynamic-dns-update
       - --allow-unauthenticated
       - --entry-point=main
-      - --env-vars-file=env.yaml
       - --memory=128MB
       - --region=europe-west6
       - --runtime=python39
