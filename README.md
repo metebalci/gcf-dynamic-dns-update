@@ -27,8 +27,8 @@ It can be directly used with UDM Pro (and possibly other Unifi and Edge routers)
 - service: dyndns
 - hostname: hostname you want to update, write FQDN (no trailing dot)
 - username: not used
-- password: it should be same as PASS environment variable of the cloud function deployed
-- server: <CLOUD_FUNCTION_TRIGGER_URL_WITHOUT_HTTPS>?myip=%i&hostname=%h
+- password: it should be as same as the value of the PASS environment variable of the cloud function deployed
+- server: `<CLOUD_FUNCTION_TRIGGER_URL_WITHOUT_HTTPS>?myip=%i&hostname=%h`
 
 On UDM Pro, you can check the resulting config at `/run/inadyn.conf`. 
 
