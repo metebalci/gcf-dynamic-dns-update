@@ -15,7 +15,7 @@ def main(request):
         return f'badauth'
 
     auth = auth[5:].strip()
-    unpw = base64.standard_b64decode(auth).split(':')
+    unpw = base64.standard_b64decode(auth.encode('ASCII')).split(':')
 
     print(unpw)
 
