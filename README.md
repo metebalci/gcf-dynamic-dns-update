@@ -39,3 +39,4 @@ On UDM Pro, you can check the resulting config at `/run/inadyn.conf`.
 # References
 
 - https://help.dyn.com/remote-access-api/
+- https://googleapis.dev/python/dns/latest/index.html
