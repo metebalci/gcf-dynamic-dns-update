@@ -21,9 +21,15 @@ def main(request):
     zone = cli.zone(zone_name)
     # rr has trailing dot
     hostname = hostname + '.'
-    rr = zone.resource_record_set(hostname, 'A', 60, [myip])
+    item = None
+    for iter in zone.list_resource_record_sets():
+        if item.name == hostname and item.record_type == 'A':
+            found = item
+            break
     changes = zone.changes()
-    changes.delete_record_set(rr)
+    if found:
+        changes.delete_record_set(found)
+    rr = zone.resource_record_set(hostname, 'A', 60, [myip])
     changes.add_record_set(rr)
     changes.create()
 
