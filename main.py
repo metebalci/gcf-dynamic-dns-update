@@ -3,6 +3,7 @@ import base64
 from google.cloud.dns.client import Client
 
 zone_name = os.environ['ZONE']
+correct_pass = os.environ['PASS']
 
 def main(request):
 
@@ -14,9 +15,12 @@ def main(request):
         return f'badauth'
 
     auth = auth[5:].strip()
-    unpw = base64.standard_b64decode(auth)
+    unpw = base64.standard_b64decode(auth).split(':')
 
     print(unpw)
+
+    if unpw[1] <> correct_pass:
+        return f'badauth'
 
     hostname = request.args.get('hostname', None)
     myip = request.args.get('myip', None)
