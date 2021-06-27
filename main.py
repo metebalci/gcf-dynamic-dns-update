@@ -19,7 +19,7 @@ def main(request):
 
     print(unpw)
 
-    if unpw[1] <> correct_pass:
+    if unpw[1] != correct_pass:
         return f'badauth'
 
     hostname = request.args.get('hostname', None)
