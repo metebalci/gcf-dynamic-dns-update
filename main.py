@@ -17,8 +17,6 @@ def main(request):
     auth = auth[5:].strip()
     unpw = base64.standard_b64decode(auth).decode('ascii').split(':')
 
-    print(unpw)
-
     if unpw[1] != correct_pass:
         return f'badauth'
 
