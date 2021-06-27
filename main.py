@@ -22,7 +22,7 @@ def main(request):
     # rr has trailing dot
     hostname = hostname + '.'
     item = None
-    for iter in zone.list_resource_record_sets():
+    for item in zone.list_resource_record_sets():
         if item.name == hostname and item.record_type == 'A':
             found = item
             break
