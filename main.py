@@ -1,9 +1,22 @@
 import os
+import base64
 from google.cloud.dns.client import Client
 
 zone_name = os.environ['ZONE']
 
 def main(request):
+
+    auth = request.headers.get('Authorization', None)
+    if auth is None:
+        return f'badauth'
+
+    if not auth.startswith('Basic'):
+        return f'badauth'
+
+    auth = auth[5:].strip()
+    unpw = base64.standard_b64decode(auth)
+
+    print(unpw)
 
     hostname = request.args.get('hostname', None)
     myip = request.args.get('myip', None)
