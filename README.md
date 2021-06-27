@@ -35,3 +35,7 @@ On UDM Pro, you can check the resulting config at `/run/inadyn.conf`.
 # Known Issues
 
 - Cloud Function does not actually check if the DNS record is updated, it only creates the change request.
+
+# References
+
+- https://help.dyn.com/remote-access-api/
