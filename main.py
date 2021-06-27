@@ -36,18 +36,24 @@ def main(request):
 
     cli = Client()
     zone = cli.zone(zone_name)
+
     # rr has trailing dot
     hostname = hostname + '.'
-    item = None
+    found = None
     for item in zone.list_resource_record_sets():
         if item.name == hostname and item.record_type == 'A':
             found = item
             break
+
+    if found is None:
+        return f'nohost'
+
     changes = zone.changes()
-    if found:
-        changes.delete_record_set(found)
+    changes.delete_record_set(found)
     rr = zone.resource_record_set(hostname, 'A', 60, [myip])
     changes.add_record_set(rr)
     changes.create()
+
+    # not checking if changes are applied
 
     return f'good ' + myip
