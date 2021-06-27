@@ -1,0 +1,13 @@
+steps:
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    args:
+      - gcloud
+      - functions
+      - deploy
+      - dynamic-dns-update
+      - --allow-unauthenticated
+      - --entry-point=main
+      - --memory=128MB
+      - --region=europe-west6
+      - --runtime=python39
+      - --trigger-http
